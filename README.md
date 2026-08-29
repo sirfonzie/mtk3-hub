@@ -25,14 +25,14 @@ The goal of this project is to expand µT-Kernel 3.0 support across Espressif's 
 
 Choose a target platform below to navigate to its specific repository, source code, and build instructions.
 
-### 1. [ESP32-S3 SMP Port](link-to-your-s3-repo)
+### 1. [ESP32-S3 SMP Port - Coming Soon](link-to-your-s3-repo)
 **Status:** Active | **Variant:** SMP
 Created a Symmetric Multiprocessing (SMP) variation of the RTOS specifically tailored for the ESP32-S3's dual-core Xtensa architecture. 
 * **Current Capabilities:** 
   * [Add 2-3 bullet points here, e.g., Core affinity scheduling, inter-processor interrupts (IPI), spinlock implementations.]
   * Builds via [ESP-IDF / specific toolchain].
 
-### 2. [ESP32-C6 Port](link-to-your-c6-repo)
+### 2. [ESP32-C6 Port - Coming Soon](link-to-your-c6-repo)
 **Status:** Active | **Variant:** Standard (Single-Core)
 A port targeting the ESP32-C6 RISC-V core. While similar to the C3, this port implements the necessary modifications for the C6's distinct interrupt handling mechanism.
 * **Current Capabilities:** 
@@ -48,7 +48,7 @@ The baseline RISC-V port for the ESP32-C3, establishing the foundational archite
   * Radios — WiFi, lwIP, ESP-NOW, ESP-MESH, and BLE (NimBLE) run on µT-Kernel via a FreeRTOS API shim. BLE and WiFi each solid; concurrent WiFi+BLE works but is marked experimental.
   * Examples — 12 standalone IDF apps, from a two-task template to a two-board BLE + ESP-MESH bridge.
 
-### 4. [Raspberry Pi Pico (RP2040) SMP Extension](link-to-your-pico-repo)
+### 4. [Raspberry Pi Pico (RP2040) SMP Extension - Coming Soon](link-to-your-pico-repo)
 **Status:** Active | **Variant:** SMP
 This repository branches from the official TRON Forum Raspberry Pi Pico port and extends it to become fully SMP compliant, utilizing both ARM Cortex-M0+ cores.
 * **Current Capabilities:**
