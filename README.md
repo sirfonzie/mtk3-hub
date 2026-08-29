@@ -43,7 +43,7 @@ A port targeting the ESP32-C6 RISC-V core. While similar to the C3, this port im
 The baseline RISC-V port for the ESP32-C3, establishing the foundational architecture for Espressif RISC-V targets.
 * **Current Capabilities:**
   * Boards — ESP32-C3 Super Mini (native USB-JTAG) and M5StampC3 (CH9102 UART0).
-  * Kernel — full preemptive µT-Kernel 3.0 (IEEE 2050-2018) as sole scheduler, FreeRTOS replaced at startup. Tasks, priorities, semaphores, event flags, mutexes with priority inheritance, mailboxes, message buffers, fixed/variable memory pools, cyclic + alarm handlers, physical timers. 1 ms tick.
+  * Kernel — full preemptive µT-Kernel 3.0 (IEEE 2050-2018). Tasks, priorities, semaphores, event flags, mutexes with priority inheritance, mailboxes, message buffers, fixed/variable memory pools, cyclic + alarm handlers, physical timers. 1 ms tick.
   * Peripherals — DEV_SER (UART1) and DEV_ADC (ADC1 ch0–4) through the device manager; all ESP-IDF drivers remain available to applications.
   * Radios — WiFi, lwIP, ESP-NOW, ESP-MESH, and BLE (NimBLE) run on µT-Kernel via a FreeRTOS API shim. BLE and WiFi each solid; concurrent WiFi+BLE works but is marked experimental.
   * Examples — 12 standalone IDF apps, from a two-task template to a two-board BLE + ESP-MESH bridge.
