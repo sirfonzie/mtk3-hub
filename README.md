@@ -38,7 +38,7 @@ A port targeting the ESP32-C6 RISC-V core. While similar to the C3, this port im
 * **Current Capabilities:** 
   * [Add 2-3 bullet points here, e.g., Context switching, basic peripheral drivers, tickless idle support.]
 
-### 3. [ESP32-C3 Port]([link-to-your-c3-repo](https://github.com/sirfonzie/esp32c3-mtk3.git))
+### 3. [ESP32-C3 Port](https://github.com/sirfonzie/esp32c3-mtk3.git)
 **Status:** Stable | **Variant:** Standard (Single-Core)
 The baseline RISC-V port for the ESP32-C3, establishing the foundational architecture for Espressif RISC-V targets.
 * **Current Capabilities:**
