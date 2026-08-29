@@ -13,7 +13,10 @@ The goal of this project is to expand µT-Kernel 3.0 support across Espressif's 
 | **ESP32-C3** | RISC-V | Single-Core | Standard | Baseline RISC-V implementation. |
 | **ESP32-C6** | RISC-V | Single-Core | Standard | Custom interrupt controller handling distinct from C3. |
 | **ESP32-S3** | Xtensa | Dual-Core | **SMP** | Symmetric Multiprocessing adaptation for dual-core Xtensa. |
+| **Pi Pico (RP2040)** | ARM Cortex-M0+ | Single-Core | Standard | Official TRON Forum port (https://github.com/tron-forum/mtk3_bsp). |
 | **Pi Pico (RP2040)** | ARM Cortex-M0+ | Dual-Core | **SMP** | SMP extension of the official TRON Forum port. |
+| **Pi Pico 2 (RP2350)** | ARM Cortex-M33 | Dual-Core | **SMP** | SMP extension of the official TRON Forum port (WIP). |
+| **Pi Pico 2 (RP2350)** | RISC-V Hazard | Dual-Core | **SMP** | SMP extension of the official TRON Forum port (NEXT). |
 
 ---
 
