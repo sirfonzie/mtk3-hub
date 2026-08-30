@@ -52,11 +52,15 @@ The baseline RISC-V port for the ESP32-C3, establishing the foundational archite
   * Radios — WiFi, lwIP, ESP-NOW, ESP-MESH, and BLE (NimBLE) run on µT-Kernel via a FreeRTOS API shim. BLE and WiFi each solid; concurrent WiFi+BLE works but is marked experimental.
   * Examples — 12 standalone IDF apps, from a two-task template to a two-board BLE + ESP-MESH bridge.
 
-### 4. [Raspberry Pi Pico (RP2040) SMP Extension - Coming Soon](link-to-your-pico-repo)
+### 4. [Raspberry Pi Pico (RP2040) with SMP Extension](https://github.com/sirfonzie/mtk3smp-rp2040.git)
 **Status:** Active | **Variant:** SMP
 This repository branches from the official TRON Forum Raspberry Pi Pico port and extends it to become fully SMP compliant, utilizing both ARM Cortex-M0+ cores.
 * **Current Capabilities:**
-  * [Add 2-3 bullet points here, e.g., Bootstrapping Core 1, synchronized task queues, hardware FIFO utilization.]
+  * True SMP scheduling - global ready queue with per-core dispatch, static task affinity, cross-core wake, inter-processor interrupts, and remote task management, all qualified on hardware
+  * Full preemptive kernel - tasks, priorities, semaphores, event flags, mutexes, mailboxes, message buffers, fixed and variable memory pools, cyclic and alarm handlers with per-processor assignment
+  * Measured 1.799x speedup - the same 384-job workload runs 44.4% faster with one worker per core than with both pinned to one
+Two qualified console profiles - UART0 (the baseline) and an optional SMP USB-CDC profile that survives a dual-core print storm with zero unintended drops
+CYW43439 radio bring-up - firmware boot, station enable, OTP MAC and active scan pass a 72/72 hardware gate as a development profile
 
 ---
 
