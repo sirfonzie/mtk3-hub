@@ -36,7 +36,11 @@ Created a Symmetric Multiprocessing (SMP) variation of the RTOS specifically tai
 **Status:** Active | **Variant:** Standard (Single-Core)
 A port targeting the ESP32-C6 RISC-V core. While similar to the C3, this port implements the necessary modifications for the C6's distinct interrupt handling mechanism.
 * **Current Capabilities:** 
-  * [Add 2-3 bullet points here, e.g., Context switching, basic peripheral drivers, tickless idle support.]
+  * Boards — M5Stack M5NanoC6 (native USB-Serial-JTAG) and Waveshare ESP32-C6-LCD-1.3. The M5NanoC6 is the validated reference board; the Waveshare port builds and is documented but has no hardware capture yet.
+  * Kernel — full preemptive µT-Kernel 3.0 (IEEE 2050-2018). Tasks, priorities, semaphores, event flags, mutexes, mailboxes, message buffers, fixed/variable memory pools, cyclic + alarm handlers, physical timers. 1 ms tick. Boot smoke suite passes 8/8 on every start.
+  * Peripherals — DEV_SER (UART1, routed to the M5NanoC6 Grove port) through the device manager; all ESP-IDF drivers remain available to applications. No DEV_ADC or I²C driver on this target.
+  * Radios — WiFi, lwIP, ESP-MESH, and BLE (NimBLE) run on µT-Kernel via a FreeRTOS API shim that passes 97/97 of its own hardware validation checks. Adds an IEEE 802.15.4 promiscuous listener — all three share the C6's single 2.4 GHz front end through the software coexistence arbiter. Concurrent WiFi+BLE works but is marked experimental.
+  * Examples — 10 standalone IDF apps, from a two-task template to a two-board BLE + ESP-MESH bridge and a full LCD/TF/RGB board-scanner.
 
 ### 3. [ESP32-C3 Port](https://github.com/sirfonzie/esp32c3-mtk3.git)
 **Status:** Stable | **Variant:** Standard (Single-Core)
