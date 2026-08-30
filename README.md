@@ -59,8 +59,8 @@ This repository branches from the official TRON Forum Raspberry Pi Pico port and
   * True SMP scheduling - global ready queue with per-core dispatch, static task affinity, cross-core wake, inter-processor interrupts, and remote task management, all qualified on hardware
   * Full preemptive kernel - tasks, priorities, semaphores, event flags, mutexes, mailboxes, message buffers, fixed and variable memory pools, cyclic and alarm handlers with per-processor assignment
   * Measured 1.799x speedup - the same 384-job workload runs 44.4% faster with one worker per core than with both pinned to one
-Two qualified console profiles - UART0 (the baseline) and an optional SMP USB-CDC profile that survives a dual-core print storm with zero unintended drops
-CYW43439 radio bring-up - firmware boot, station enable, OTP MAC and active scan pass a 72/72 hardware gate as a development profile
+  * Two qualified console profiles - UART0 (the baseline) and an optional SMP USB-CDC profile that survives a dual-core print storm with zero unintended drops
+  * CYW43439 radio bring-up - firmware boot, station enable, OTP MAC and active scan pass a 72/72 hardware gate as a development profile
 
 ---
 
