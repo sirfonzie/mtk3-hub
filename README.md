@@ -32,7 +32,7 @@ Created a Symmetric Multiprocessing (SMP) variation of the RTOS specifically tai
   * [Add 2-3 bullet points here, e.g., Core affinity scheduling, inter-processor interrupts (IPI), spinlock implementations.]
   * Builds via [ESP-IDF / specific toolchain].
 
-### 2. [ESP32-C6 Port - Coming Soon](link-to-your-c6-repo)
+### 2. [ESP32-C6 Port](https://github.com/sirfonzie/esp32c6-mtk3.git)
 **Status:** Active | **Variant:** Standard (Single-Core)
 A port targeting the ESP32-C6 RISC-V core. While similar to the C3, this port implements the necessary modifications for the C6's distinct interrupt handling mechanism.
 * **Current Capabilities:** 
