@@ -4,7 +4,8 @@
 
 This repository serves as the central landing page and documentation hub for a series of independent ports of the TRON Forum's [µT-Kernel 3.0](https://github.com/tron-forum/mtkernel_3) to various modern microcontrollers. 
 
-The goal of this project is to expand µT-Kernel 3.0 support across Espressif's ESP32 ecosystem and extend the official Raspberry Pi Pico port to support Symmetric Multiprocessing (SMP).
+The goal of this project is to expand µT-Kernel 3.0 support across Espressif's ESP32 ecosystem and extend the official Raspberry Pi Pico port to support 
+Symmetric Multiprocessing (SMP). The SMP ports follow the TRON Forum's SMP T-Kernel (TK/SMP) model — its spinlock API, TA_ASSPRC/TP_PRCn processor assignment, and into_dsp/chk_restore dispatcher protocol are adapted to dual-core Xtensa and Cortex-M silicon. The SMP model is not mine; the ports and their hardware qualification are.
 
 ## Supported Architectures Matrix
 
