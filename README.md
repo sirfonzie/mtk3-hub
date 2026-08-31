@@ -25,12 +25,18 @@ The goal of this project is to expand µT-Kernel 3.0 support across Espressif's 
 
 Choose a target platform below to navigate to its specific repository, source code, and build instructions.
 
-### 1. [ESP32-S3 SMP Port - Coming Soon](link-to-your-s3-repo)
+### 1. [ESP32-S3 SMP Port](https://github.com/sirfonzie/mtk3smp-esp32s3)
 **Status:** Active | **Variant:** SMP
 Created a Symmetric Multiprocessing (SMP) variation of the RTOS specifically tailored for the ESP32-S3's dual-core Xtensa architecture. 
 * **Current Capabilities:** 
-  * [Add 2-3 bullet points here, e.g., Core affinity scheduling, inter-processor interrupts (IPI), spinlock implementations.]
-  * Builds via [ESP-IDF / specific toolchain].
+  * Boards — Generic ESP32-S3 Mini / DevKit (default profile, UART0 on GPIO43/44 via an external adapter) and the M5Stack M5StickS3 (native USB-Serial-JTAG). The M5StickS3 is the validated reference board.
+  * SMP — Two µT-Kernel dispatchers over one global ready queue, a recursive big kernel lock, a global timeout queue with core 0 as sole timekeeper, and freely migratable ordinary tasks. Core affinity is creation-time via TA_ASSPRC/TP_PRCn; cross-core reschedule runs over the S3's FROM_CPU inter-processor interrupts. Single core remains the default and compatibility profile.
+  * Coprocessor state (the SMP-specific hard part) — Task-private Xtensa FPU (CP0) and SIMD (CP3) state, re-hosting IDF's lazy owner/save protocol rather than inventing one: the dispatcher saves and clears CPENABLE on interrupt entry and restores it per task on exit. A coprocessor task must be pinned to exactly one processor — the register file is physical and per-core — and an unpinned one is rejected with E_NOCOP. Verified at 27,500 rounds with zero mismatches, concurrently with Wi-Fi, MQTT and BLE. This is what unblocked Wi-Fi, whose libpp executes floating-point instructions.
+  * Kernel — Full preemptive µT-Kernel 3.0 (IEEE 2050-2018). Tasks, priorities, semaphores, event flags, mutexes with priority inheritance and ceiling, mailboxes, message buffers, fixed/variable memory pools, cyclic + alarm handlers, physical timers. 1 ms tick.
+  * Peripherals — Ten device-manager drivers on the M5StickS3, all polled and register-level rather than wrapping esp_driver_*: I2C ×2, M5PM1 PMIC, ST7789P3 LCD, BMI270 IMU, ES8311 codec, IR via RMT, buttons, DEV_SER and DEV_ADC. All ESP-IDF drivers remain available to applications. Known gaps: audio is control-path only (I2S needs hand-written GDMA descriptors) and IR receive does not yet capture.
+  * Radios — Wi-Fi STA, MQTT, BLE (NimBLE advertising + GATT), ESP-NOW and ESP-MESH run on µT-Kernel through a bounded FreeRTOS API shim. Verified together on the SMP profile: WPA2 association, DHCP lease, MQTT telemetry to a LAN broker, and a BLE peripheral accepting a connection — both radios sharing one antenna through software coexistence, with the FPU soak clean throughout. Duration and coverage, not correctness, are what keep them outside the qualified matrix.
+  * Examples — 15 standalone IDF apps, from a two-task template to Sentinel: a battery-powered site monitor that senses motion and environment, drives a paged LCD dashboard, publishes telemetry over MQTT, exposes the same values over BLE GATT, and fires an IR command when a rule trips — with radios pinned to core 0 and the integer-only sensing, rules and UI tasks free to migrate.
+  * Builds against ESP-IDF v6.1-dev with xtensa-esp-elf-gcc 15.2.0, bypassing IDF's FreeRTOS scheduler via --wrap=esp_startup_start_app.
 
 ### 2. [ESP32-C6 Port](https://github.com/sirfonzie/esp32c6-mtk3.git)
 **Status:** Active | **Variant:** Standard (Single-Core)
